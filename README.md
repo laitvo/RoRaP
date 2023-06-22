@@ -12,4 +12,4 @@ The code was drafted by Vojta Laitl, as partially reproduced from program script
 ## Dependencies
 The program scripts above are to be found in [*/rorap*]([https://github.com/laitvo/PuPlasAn/tree/main/puplasan](https://github.com/laitvo/RoRaP/tree/main/rorap)) and are elaborated in [*/example*]([https://github.com/laitvo/PuPlasAn/tree/main/example](https://github.com/laitvo/RoRaP/tree/main/example) folders, respectively. We recommend that the users download the example file alongside the program scripts.
 
-Conventional libraries, `numpy', `scipy', and `pylab' are employed. Besides them, running the example script and conveniently using the library requires having [`spe2py'](https://pypi.org/project/spe2py/) and [`lmfit'](https://pypi.org/project/lmfit/) installed.
+Conventional libraries, `numpy`, `scipy`, and `pylab` are employed. Besides them, running the example script and conveniently using the library requires having [`spe2py`](https://pypi.org/project/spe2py/) and [`lmfit`](https://pypi.org/project/lmfit/) installed.
