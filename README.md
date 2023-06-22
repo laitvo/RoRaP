@@ -10,7 +10,6 @@ The program is responsible for a simpler reading-out of rotational Raman spectra
 The code was drafted by Vojta Laitl, as partially reproduced from program scripts by Petr Kubelík, Ph.D., and Vojta Laitl at the Czech Academy of Sciences in 2022. The latter is found at [the code script's webpage](https://raw.githack.com/laitvo/PuPlasAn/main/docs/build/html/index.html) and distributed under [Apache License 2.0](https://github.com/laitvo/PuPlasAn/blob/main/LICENSE). All details to particular functions and program modules are to be found in the above code scripts and in the example section below.
 
 ## Dependencies
-Dependencies are to be constructed.
+The program scripts above are to be found in [*/rorap*]([https://github.com/laitvo/PuPlasAn/tree/main/puplasan](https://github.com/laitvo/RoRaP/tree/main/rorap)) and are elaborated in [*/example*]([https://github.com/laitvo/PuPlasAn/tree/main/example](https://github.com/laitvo/RoRaP/tree/main/example) folders, respectively. We recommend that the users download the example file alongside the program scripts.
 
-## Example section
-Example section is to be constructed.
+Conventional libraries, `numpy', `scipy', and `pylab' are employed. Besides them, running the example script and conveniently using the library requires having [`spe2py'](https://pypi.org/project/spe2py/) and [`lmfit'](https://pypi.org/project/lmfit/) installed.
