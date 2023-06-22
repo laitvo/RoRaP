@@ -188,6 +188,7 @@ fiber_pos = [
 ]
 
 ##declaring exemplified experimental data
+##background image follows a real measurement
 experiment = [
 'minimal_example.spe',
 'minimal_example-BCKG.spe'
