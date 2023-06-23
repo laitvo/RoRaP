@@ -256,7 +256,7 @@ def Q_rot(B0, sigma_0, T_rot):
     '''
 
     beta = h*c*100.*B0/(k*T_rot)
-    Q_rot = (1./sigma_0)*np.exp(beta/3.)*(1.+(beta**2)/90.)
+    Q_rot = (1./sigma_0)*(np.exp(beta/3.)/beta)*(1.+(beta**2)/90.)
 
     return Q_rot
 
