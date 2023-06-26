@@ -1,0 +1,77 @@
+rorap package
+=============
+
+Submodules
+----------
+
+rorap.assign module
+-------------------
+
+.. automodule:: rorap.assign
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.bline module
+------------------
+
+.. automodule:: rorap.bline
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.fiber module
+------------------
+
+.. automodule:: rorap.fiber
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.filters module
+--------------------
+
+.. automodule:: rorap.filters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.noise module
+------------------
+
+.. automodule:: rorap.noise
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.pdetect module
+--------------------
+
+.. automodule:: rorap.pdetect
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.pfit module
+-----------------
+
+.. automodule:: rorap.pfit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rorap.raman module
+------------------
+
+.. automodule:: rorap.raman
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rorap
+   :members:
+   :undoc-members:
+   :show-inheritance:

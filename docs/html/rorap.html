@@ -1,0 +1,1267 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>rorap package &#8212; RoRaP 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="rorap" href="modules.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="rorap"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RoRaP 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">rorap</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">rorap package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="rorap-package">
+<h1>rorap package<a class="headerlink" href="#rorap-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-rorap.assign">
+<span id="rorap-assign-module"></span><h2>rorap.assign module<a class="headerlink" href="#module-rorap.assign" title="Permalink to this headline">¶</a></h2>
+<section id="assignment-module">
+<h3>Assignment module<a class="headerlink" href="#assignment-module" title="Permalink to this headline">¶</a></h3>
+<p>This module is responsible for mutual assignment between experimental and theoretically predicted indices in data arrays (e.g., in those comprised by spectral records). Iterative minimisation is employed.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.assign.assign">
+<span class="sig-prename descclassname"><span class="pre">rorap.assign.</span></span><span class="sig-name descname"><span class="pre">assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">px1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">px2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.assign.assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the closest values form <em>px1</em> and <em>px2</em>.</p>
+<dl class="simple">
+<dt>px1: list or numpy.arrays containing floats, 1-D each</dt><dd><p>list containing experimental peak positions</p>
+</dd>
+<dt>px2<span class="classifier">list of numpy.arrays containing floats, 1-D each</span></dt><dd><p>list containing theoretical peak positions</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>inds<span class="classifier">list of tuples</span></dt><dd><p>list of tuples with assigned indexes corresponding to the values
+<em>inds</em> correspond to indices of <em>px1</em> and <em>px2</em> (e.g., [(5,9), (6,12)…])</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-rorap.bline">
+<span id="rorap-bline-module"></span><h2>rorap.bline module<a class="headerlink" href="#module-rorap.bline" title="Permalink to this headline">¶</a></h2>
+<section id="baseline-correction-module">
+<h3>Baseline correction module<a class="headerlink" href="#baseline-correction-module" title="Permalink to this headline">¶</a></h3>
+<p>This module contains functions for determination the base line
+of experimental data (e.g., UV–ViS spectrum). The base line is obtained
+by iterative removing the high frequency signal and interpolating
+the remaining points by the spline method.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.bline.base">
+<span class="sig-prename descclassname"><span class="pre">rorap.bline.</span></span><span class="sig-name descname"><span class="pre">base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wpn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fulloutput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cbfun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cbfunargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.bline.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the baseline of the input intensity data <em>I_wn</em> using an iterative removing
+of the high frequency signal. The method is based on application of moving
+average smoothing.</p>
+<dl>
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>array of wavenumbers to be fitted against
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>intensity spectrum
+<em>I_wn</em> must correspond to strictly increasing <em>wn</em></p>
+</dd>
+<dt>wpn<span class="classifier">int</span></dt><dd><p>number of the adjacent values of <em>I_wn</em> being averaged
+<em>wpn</em> must be an odd integer</p>
+</dd>
+<dt>noise<span class="classifier">float OR numpy.array</span></dt><dd><p>Estimated noise level of the data in the <em>I_wn</em> array 
+if <em>noise</em> is an array, it must be of the same length as <em>wn</em></p>
+</dd>
+<dt>rem<span class="classifier">float</span></dt><dd><p>during the calculation the elements of <em>I_wn</em> containing the high
+frequency signal are removed iteratively. The iterations are stopped
+when the number of the remining elements in the <em>I_wn</em> is equal or lower
+then lenx*(1. - <em>rem</em>), where <em>lenx</em> is the original length
+of the <em>I_wn</em> array.</p>
+</dd>
+<dt>k<span class="classifier">int</span></dt><dd><p>Degree of the smoothing spline
+<em>k</em> must be &lt;= 5
+by defaul, <em>k</em> equals <em>1</em> (invoking a linear spline)</p>
+</dd>
+<dt>fulloutput<span class="classifier">bool</span></dt><dd><p>boolean algebra object influencing the output (see the <em>Returns</em> section).
+by default, <em>fulloutput</em> equals <em>False</em></p>
+</dd>
+<dt>cbfun<span class="classifier">callable OR None, optional <em>cbfun(b_inds, ma, *cbfunargs)</em></span></dt><dd><p>a callback function executed at the end of each iteration
+(<em>cbfun(b_inds, ma, *cbfunargs)</em>),
+<em>b_inds</em> is an numpy.array containing the actual indices
+of the array <em>I_wn</em> which are used to construct the baseline,
+<em>ma</em> is an array of smoothed values of <em>I_wn</em> corresponding to the indexes
+in the <em>b_inds</em> array</p>
+</dd>
+<dt>cbfunargs<span class="classifier">tuple, optional</span></dt><dd><p>Extra positional arguments passed to <em>cbfun</em></p>
+</dd>
+<dt>remrate<span class="classifier">float</span></dt><dd><p>A number in (1,inf] range 
+recommended values are between 1.05 and 3
+the higher is the value the more signal points
+are removed during one iteration
+by default, <em>remrate</em> equals <em>1.5</em></p>
+</dd>
+</dl>
+<p>If <em>fulloutput</em> is <em>True</em>, returns</p>
+<dl class="simple">
+<dt>spl(wn)<span class="classifier">numpy.array</span></dt><dd><p>array containing the <em>I_wn</em> data base line
+<em>spl(wn)</em> corresponds to strictly increasing <em>wn</em></p>
+</dd>
+<dt>spl<span class="classifier">instance</span></dt><dd><p>an instance of the <em>scipy.interpolate.fitpack2.LSQUnivariateSpline</em> class
+<em>spl</em> passed on <em>wn</em> data returns the numerical base line</p>
+</dd>
+<dt>b_inds<span class="classifier">numpy.array</span></dt><dd><p>array containing the indices of <em>I_wn</em> corresponding to the base line with the high frequency
+signal removed
+<em>b_inds</em> corresponds to strictly increasing <em>wn</em></p>
+</dd>
+</dl>
+<p>Else, returns</p>
+<dl class="simple">
+<dt>spl(wn)<span class="classifier">numpy.array</span></dt><dd><p>array containing the <em>I_wn</em> data base line
+<em>spl(wn)</em> corresponds to strictly increasing <em>wn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-rorap.fiber">
+<span id="rorap-fiber-module"></span><h2>rorap.fiber module<a class="headerlink" href="#module-rorap.fiber" title="Permalink to this headline">¶</a></h2>
+<p>Fiber calibrating module</p>
+<p>Functions contained here are responsible for reading out the fiber bundle’s PI-MAX image and converting it onto experimental Raman spectra.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.fiber.fiber_load">
+<span class="sig-prename descclassname"><span class="pre">rorap.fiber.</span></span><span class="sig-name descname"><span class="pre">fiber_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.fiber.fiber_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads experimental spectra from specified files and subtracts experimental backgroud.</p>
+<dl class="simple">
+<dt>experiment<span class="classifier">list of strings</span></dt><dd><p>list of strings describing (relative) paths to experimental data files
+<em>experiment</em> must point onto possibly replicated <em>.SPE</em> files
+the last string of <em>experiment</em> must be experimental background file</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>data<span class="classifier">numpy.array</span></dt><dd><p>array containing the raw experimental image given by averaging any replicas and subtracting experimental background</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.fiber.fiber_spectra">
+<span class="sig-prename descclassname"><span class="pre">rorap.fiber.</span></span><span class="sig-name descname"><span class="pre">fiber_spectra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fiber_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binning</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dispersion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_pixels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.fiber.fiber_spectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates cutoff wavelengths of a fiber bundle and draws experimental spectra for each fiber.</p>
+<dl class="simple">
+<dt>data<span class="classifier">numpy.array</span></dt><dd><p>array containing the raw experimental image given by averaging any replicas and subtracting experimental background</p>
+</dd>
+<dt>pos_0<span class="classifier">&lt;function __main__.&lt;lambda&gt;(y)&gt;</span></dt><dd><p>horizontal position of fibers collecting a reference peak of <em>lambda_0</em> wavelength
+pos_0 must be a single-argument function of the vertical position</p>
+</dd>
+<dt>lambda_0<span class="classifier">float</span></dt><dd><p>reference peak wavelength recorded at <em>pos_0</em> (y)
+<em>lambda_0</em> must be wavelength in nanometres</p>
+</dd>
+<dt>fiber_pos<span class="classifier">list of lists</span></dt><dd><p>list containing vertical coordinate limits of all fibers and their horizontal cutoff pixels for an unbinned sensor
+an example format reads <em>[[[0,17],384],[[18,37],393],[[…,…],…], …]</em> = <em>[[[v11,v12],h1],[[v21,v22],h2],[[…,…],…], …]</em>
+the horizontal cutoff must correspond to the same reference image as <em>pos_0</em> (y)</p>
+</dd>
+<dt>dispersion<span class="classifier">float</span></dt><dd><p>linear dispersion of the system
+<em>dispersion</em> must be given in nm/pixel</p>
+</dd>
+<dt>cutoff_pixels<span class="classifier">int</span></dt><dd><p>cutoff distance of the central fibre’s spectrum
+<em>cutoff_pixels</em> are given from the fiber’s edge to the first point of Raman signal observation</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>fiber_lambda<span class="classifier">numpy.array</span></dt><dd><p>array containing the cutoff wavelengths of the bundle
+<em>fiber_lambda</em> are given in nanometres</p>
+</dd>
+<dt>fiber_spectra<span class="classifier">list of numpy.array</span></dt><dd><p>list of 2-D numpy.arrays containing individual fibers’ spectra
+each spectrum is given in a row format of [<em>Raman shift (cm-1)</em>, <em>signal (arb. u.)</em> ]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-rorap.filters">
+<span id="rorap-filters-module"></span><h2>rorap.filters module<a class="headerlink" href="#module-rorap.filters" title="Permalink to this headline">¶</a></h2>
+<section id="filters-module">
+<h3>Filters module<a class="headerlink" href="#filters-module" title="Permalink to this headline">¶</a></h3>
+<p>This module assembles a smoothed moving average filter.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.filters.smooth_ma">
+<span class="sig-prename descclassname"><span class="pre">rorap.filters.</span></span><span class="sig-name descname"><span class="pre">smooth_ma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wpn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.filters.smooth_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs moving average smoothing.</p>
+<dl>
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>noised intensity spectrum</p>
+</dd>
+<dt>wpn<span class="classifier">int</span></dt><dd><p>number of the adjacent values averaged
+<em>wpn</em> must be an odd integer</p>
+<dl class="simple">
+<dt>if <em>wpn</em> is even, </dt><dd><p>the <em>wpn</em> parameter is automatically set to <em>wpn</em> + 1,
+a UserWarning is raised</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ys/wpn<span class="classifier">numpy.array</span></dt><dd><p>array containing smoothened data of <em>y</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-rorap.noise">
+<span id="rorap-noise-module"></span><h2>rorap.noise module<a class="headerlink" href="#module-rorap.noise" title="Permalink to this headline">¶</a></h2>
+<section id="signal-noise-module">
+<h3>Signal/noise module<a class="headerlink" href="#signal-noise-module" title="Permalink to this headline">¶</a></h3>
+<p>Contains functions for estimating the spectral data noise level.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.noise.noise_estim_ma">
+<span class="sig-prename descclassname"><span class="pre">rorap.noise.</span></span><span class="sig-name descname"><span class="pre">noise_estim_ma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wpn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.noise.noise_estim_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the <em>I_wn</em> data noise level by calculating the noise for <em>m</em> 
+short subarrays (of length equal to <em>n</em>) randomly selected
+from the <em>I_wn</em> array. The resulting noise level corresponds to the minimal
+value of the standard deviations calculated for all short subarrays.</p>
+<dl class="simple">
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>noised intensity spectrum</p>
+</dd>
+<dt>wpn<span class="classifier">int</span></dt><dd><p>number of the adjacent values of <em>I_wn</em> being averaged
+<em>wpn</em> must be an odd integer</p>
+</dd>
+<dt>n<span class="classifier">int</span></dt><dd><p>length of the randomly selected subarray used for calculation
+of the local noise level</p>
+</dd>
+<dt>m<span class="classifier">int</span></dt><dd><p>number of the randomly selected subarrays
+by default, <em>n</em> equals <em>10</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>min(stds)<span class="classifier">float</span></dt><dd><p>estimated noise level of the <em>y</em> data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.noise.noise_estim_ma_xdependent">
+<span class="sig-prename descclassname"><span class="pre">rorap.noise.</span></span><span class="sig-name descname"><span class="pre">noise_estim_ma_xdependent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wpn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partnum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fulloutput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.noise.noise_estim_ma_xdependent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the <em>wn</em>-dependent <em>I_wn</em> data noise level.</p>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>array of wavenumbers to be fitted against
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>noised intensity spectrum
+<em>I_wn</em> must correspond to strictly increasing <em>wn</em></p>
+</dd>
+<dt>wpn<span class="classifier">int</span></dt><dd><p>number of the adjacent values of <em>I_wn</em> being averaged
+<em>wpn</em> must be an odd integer</p>
+</dd>
+<dt>n<span class="classifier">int</span></dt><dd><p>length of the randomly selected subarray used for calculation
+of the local noise level</p>
+</dd>
+<dt>partnum<span class="classifier">int</span></dt><dd><p>number of equidistant points for which the <em>x</em>-dependent
+noise is calculated</p>
+</dd>
+<dt>m<span class="classifier">int</span></dt><dd><p>number of the randomly selected subarrays
+by default, <em>n</em> equals <em>10</em></p>
+</dd>
+<dt>k<span class="classifier">int</span></dt><dd><p>Degree of the smoothing spline
+<em>k</em> must be &lt;= 5
+by defaul, <em>k</em> equals <em>1</em> (invoking a linear spline)</p>
+</dd>
+<dt>fulloutput<span class="classifier">bool</span></dt><dd><p>boolean algebra object influencing the output (see the <em>Returns</em> section).
+by default, <em>fulloutput</em> equals <em>False</em></p>
+</dd>
+</dl>
+<p>If <em>fulloutput</em> is <em>True</em>, returns</p>
+<dl class="simple">
+<dt>spl(wn)<span class="classifier">numpy.array</span></dt><dd><p>array containing the <em>wn</em>-dependent <em>I_wn</em> data noise level
+<em>spl(wn)</em> corresponds to strictly increasing <em>wn</em></p>
+</dd>
+<dt>spl<span class="classifier">instance</span></dt><dd><p>an instance of the <em>scipy.interpolate.fitpack2.LSQUnivariateSpline</em> class
+<em>spl</em> passed on <em>wn</em> data returns the numerical noise</p>
+</dd>
+<dt>sdevx<span class="classifier">list</span></dt><dd><p>list of <em>wn</em>-values (positions) of the calculated noise
+length of <em>sdevx</em> is equal to <em>partnum</em></p>
+</dd>
+<dt>sdevy<span class="classifier">list</span></dt><dd><p>list of <em>wn</em>-dependent <em>I_wn</em> data noise corrresponding to <em>sdevx</em></p>
+</dd>
+</dl>
+<p>Else, returns</p>
+<dl class="simple">
+<dt>spl(wn)<span class="classifier">numpy.array</span></dt><dd><p>array containing the <em>wn</em>-dependent <em>I_wn</em> data noise level
+<em>spl(wn)</em> corresponds to strictly increasing <em>wn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.noise.std_ma">
+<span class="sig-prename descclassname"><span class="pre">rorap.noise.</span></span><span class="sig-name descname"><span class="pre">std_ma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noisedata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wpn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.noise.std_ma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the standard deviation of the difference between <em>noisedata</em>
+array and its moving average.</p>
+<dl class="simple">
+<dt>noisedata<span class="classifier">numpy.array</span></dt><dd><p>array containing net noise disposed of high-frequency signal</p>
+</dd>
+<dt>wpn<span class="classifier">int</span></dt><dd><p>number of the adjacent values of <em>I_wn</em> being averaged
+<em>wpn</em> must be an odd integer</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>stdev<span class="classifier">numpy.array</span></dt><dd><p>standard deviation of the difference between <em>noisedata</em>
+array and its moving average (i.e., the standard deviation of the base line 
+corrected data with no signal)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-rorap.pdetect">
+<span id="rorap-pdetect-module"></span><h2>rorap.pdetect module<a class="headerlink" href="#module-rorap.pdetect" title="Permalink to this headline">¶</a></h2>
+<section id="peak-detection-module">
+<h3>Peak detection module<a class="headerlink" href="#peak-detection-module" title="Permalink to this headline">¶</a></h3>
+<p>This module contains functions (especially the <em>detect</em> function)
+for detection peaks in the experimental data (e.g., an UV–ViS spectrum).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pdetect.detect">
+<span class="sig-prename descclassname"><span class="pre">rorap.pdetect.</span></span><span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr_thr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'up'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fulloutput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pdetect.detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect peaks’ positions and highs in the input data arrays.</p>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>experimentally recorded wavenumber axis
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>noised intensity spectrum
+<em>I_wn</em> must correspond to strictly increasing <em>wn</em></p>
+</dd>
+<dt>noise<span class="classifier">float OR numpy.array</span></dt><dd><p>Estimated noise level of the data in the <em>I_wn</em> array 
+if <em>noise</em> is an array, it must be of the same length as <em>wn</em></p>
+</dd>
+<dt>snr_thr<span class="classifier">float</span></dt><dd><p>the peak detection threshold
+is calculated as <em>noise</em> * <em>snr_thr</em></p>
+</dd>
+<dt>ptype<span class="classifier">str</span></dt><dd><p><em>“up”</em> (selects the indices of values higher than <em>thr</em>) 
+and <em>“down”</em> (selects the indices of values higher than <em>thr</em>) 
+are only accepted as inputs        
+by default, <em>ptype</em> equals <em>“up”</em></p>
+</dd>
+<dt>fulloutput<span class="classifier">bool</span></dt><dd><p>boolean algebra object influencing the output (see the <em>Returns</em> section).
+by default, <em>fulloutput</em> equals <em>False</em></p>
+</dd>
+</dl>
+<p>If <em>fulloutput</em> is <em>True</em>, returns</p>
+<dl class="simple">
+<dt>wn[pinds]<span class="classifier">numpy.array</span></dt><dd><p>array containing containing the local extrema positions detected on the <em>wn</em> axis
+<em>wn[pinds]</em> are wavenumbers in cm-1</p>
+</dd>
+<dt>I_wn[pinds]<span class="classifier">numpy.array</span></dt><dd><p>array containing the local extrema values detected
+<em>I_wn[pinds]</em> corresponds to <em>wn[pinds]</em></p>
+</dd>
+<dt>pinds<span class="classifier">numpy.array</span></dt><dd><p>array of indices corresponding to locating the local extrema in <em>wn[pinds]</em> and/or <em>I_wn[pinds]</em></p>
+</dd>
+</dl>
+<p>Else, returns</p>
+<dl class="simple">
+<dt>wn[pinds]<span class="classifier">numpy.array</span></dt><dd><p>array containing containing the local extrema positions detected on the <em>wn</em> axis
+<em>wn[pinds]</em> are wavenumbers in cm-1</p>
+</dd>
+<dt>I_wn[pinds]<span class="classifier">numpy.array</span></dt><dd><p>array containing the local extrema values detected
+<em>I_wn[pinds]</em> corresponds to <em>wn[pinds]</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pdetect.detectThr_inds">
+<span class="sig-prename descclassname"><span class="pre">rorap.pdetect.</span></span><span class="sig-name descname"><span class="pre">detectThr_inds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'up'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pdetect.detectThr_inds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the indices of <em>I_wn</em> where the values are higher (<em>ptype</em> equals <em>“up”</em>)
+or lower (<em>ptype</em> equals <em>“down”</em>) than <em>thr</em>.</p>
+<dl class="simple">
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>noised intensity spectrum</p>
+</dd>
+<dt>thr<span class="classifier">float OR numpy.array</span></dt><dd><p>selection threshold (if array, it is a <em>wn</em>-dependent threshold)</p>
+</dd>
+<dt>ptype<span class="classifier">str</span></dt><dd><p><em>“up”</em> (selects the indices of values higher than <em>thr</em>) 
+and <em>“down”</em> (selects the indices of values higher than <em>thr</em>) 
+are only accepted as inputs        
+by default, <em>ptype</em> equals <em>“up”</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>inds<span class="classifier">numpy.array</span></dt><dd><p>array containing the indices of <em>I_wn</em> where the values
+are higher (<em>ptype</em> equals <em>“upp”</em>) or lower (<em>ptype</em> equals <em>“down”</em>) than <em>thr</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pdetect.detectTop_inds">
+<span class="sig-prename descclassname"><span class="pre">rorap.pdetect.</span></span><span class="sig-name descname"><span class="pre">detectTop_inds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">I_wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'up'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pdetect.detectTop_inds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the indices of <em>I_wn</em> where the optimum of a peak is detected.</p>
+<dl class="simple">
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>(possibly noised) intensity spectrum</p>
+</dd>
+<dt>ptype<span class="classifier">str</span></dt><dd><p><em>“up”</em> (invoking the detection of local maxima) and <em>“down”</em> (invoking the detection of local minima) 
+are only accepted as inputs        
+by default, <em>ptype</em> equals <em>“up”</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>intersec<span class="classifier">numpy.array</span></dt><dd><p>array containing the indexes of <em>I_wn</em> where the optimum of a peak is detected</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-rorap.pfit">
+<span id="rorap-pfit-module"></span><h2>rorap.pfit module<a class="headerlink" href="#module-rorap.pfit" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rorap.pfit.PeakModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">PeakModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'voigt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.PeakModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides methods to model single/multi peak profiles.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rorap.pfit.PeakModel.calc_fit_error">
+<span class="sig-name descname"><span class="pre">calc_fit_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars_flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.PeakModel.calc_fit_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the objective function value used by
+a fitting function</p>
+<dl class="simple">
+<dt>pars_flat<span class="classifier">list OR tuple of floats</span></dt><dd><p>profile model parameters in the following format:
+[par_i_peak_j, par_i+1_peak_j, par_i+2_peak_j…
+par_i_peak_j+1, par_i+1_peak_j+1… par_n_peak_m]
+“par_i_peak_j” refers to the i-th parameter of the j-th peak of the profile model
+the peak number as well as the numper of the parameters of each peak 
+must be in agreement with the internal peak model 
+this list can be generated by <em>get_flat_pars</em> method</p>
+</dd>
+<dt>datax<span class="classifier">numpy.array</span></dt><dd><p>array of independent variable values
+<em>datax</em> must be strictly increasing</p>
+</dd>
+<dt>datay<span class="classifier">numpy.array</span></dt><dd><p>array of dependent variable values
+<em>datay</em> must correspond to strictly increasing <em>datax</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>err<span class="classifier">float</span></dt><dd><p>the difference between the model profile and the <em>datay</em> parameter,
+the value is calculated es follows:
+np.sqrt(sum((self.gen_profile(datax) - datay)**2))</p>
+</dd>
+</dl>
+<p>::Warning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">by</span> <span class="n">calling</span> <span class="n">this</span> <span class="n">method</span><span class="p">,</span> <span class="n">the</span> <span class="n">internal</span> <span class="n">model</span> <span class="n">parameters</span> <span class="n">are</span> <span class="n">rewriten</span>
+<span class="n">according</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">parameter</span> <span class="o">*</span><span class="n">pars_flat</span><span class="o">*</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rorap.pfit.PeakModel.gen_profile">
+<span class="sig-name descname"><span class="pre">gen_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fulloutput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.PeakModel.gen_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the profile of multiple (possibly overlapped) peaks.
+The resulting profile is calculated as a sum of several
+peak-like profiles.</p>
+<dl class="simple">
+<dt>x<span class="classifier">numpy.array</span></dt><dd><p>array of independent variables to be fitted against
+<em>x</em> must be strictly increasing</p>
+</dd>
+<dt>fulloutput<span class="classifier">bool</span></dt><dd><p>boolean algebra object influencing the output (see the <em>Returns</em> section).
+by default, <em>fulloutput</em> equals <em>False</em></p>
+</dd>
+<dt>fulloutput<span class="classifier">bool</span></dt><dd><p>if True: returns array containing the resulting multi-peak profile
+as well as the profiles of the individual functions
+(e.g. gaussians)
+else: returns array containing the resulting multi-peak profile</p>
+</dd>
+</dl>
+<p>If <em>fulloutput</em> is <em>True</em>, returns</p>
+<dl class="simple">
+<dt>y<span class="classifier">numpy.array</span></dt><dd><p>array containing the resulting multi-peak profile
+corresponding to the independent variable <em>x</em></p>
+</dd>
+<dt>parts<span class="classifier">list</span></dt><dd><p>list of individuals peak profiles’</p>
+</dd>
+</dl>
+<p>Else, returns</p>
+<dl class="simple">
+<dt>y<span class="classifier">numpy.array</span></dt><dd><p>array containing the resulting multi-peak profile
+corresponding to the independent variable <em>x</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rorap.pfit.PeakModel.get_flat_pars">
+<span class="sig-name descname"><span class="pre">get_flat_pars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.PeakModel.get_flat_pars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns internal peak model parameters in a single flat list
+(used as an input partameter of the <em>calc_fit_error</em> method)</p>
+<dl class="simple">
+<dt>pars<span class="classifier">list of floats</span></dt><dd><p>model parameters in a single flat list with the following format:
+[par_i_peak_j, par_i+1_peak_j, par_i+2_peak_j…
+par_i_peak_j+1, par_i+1_peak_j+1… par_n_peak_m]
+where “par_i_peak_j” refers to the ith parameter
+of the jth peak of the profile model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rorap.pfit.PeakModel.profiles">
+<span class="sig-name descname"><span class="pre">profiles</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'gauss':</span> <span class="pre">&lt;function</span> <span class="pre">gauss&gt;,</span> <span class="pre">'lorentz':</span> <span class="pre">&lt;function</span> <span class="pre">lorentz&gt;,</span> <span class="pre">'pseudovoigt':</span> <span class="pre">&lt;function</span> <span class="pre">pseudovoigt&gt;,</span> <span class="pre">'voigt':</span> <span class="pre">&lt;function</span> <span class="pre">voigt&gt;}</span></em><a class="headerlink" href="#rorap.pfit.PeakModel.profiles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rorap.pfit.PeakModel.set_flat_pars">
+<span class="sig-name descname"><span class="pre">set_flat_pars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.PeakModel.set_flat_pars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the internal peak parameters of the profile model</p>
+<dl class="simple">
+<dt>pars<span class="classifier">list of floats</span></dt><dd><p>model parameters in a single flat list with the following format:
+[par_i_peak_j, par_i+1_peak_j, par_i+2_peak_j…
+par_i_peak_j+1, par_i+1_peak_j+1… par_n_peak_m]
+“par_i_peak_j” refers to the i-th parameter of the j-th peak of the profile model
+the peak number as well as the numper of the parameters of each peak 
+must be in agreement with the internal peak model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.area_estim">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">area_estim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.area_estim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the peak area by a rectangular function (i.e., by multiplying the peak height by its FWHM).</p>
+<dl class="simple">
+<dt>height<span class="classifier">float OR numpy.array</span></dt><dd><p>peak’s high</p>
+</dd>
+<dt>fwhm<span class="classifier">float OR numpy.array</span></dt><dd><p>peak’s FWHN
+if numpy.array, the length of <em>fwhm</em> must correspond to that of <em>height</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>area<span class="classifier">float OR numpy.array</span></dt><dd><p>peak area estimated as <em>height</em> * <em>fwhm</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.detect_peak_groups">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">detect_peak_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">px</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.detect_peak_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates groups of peaks which are so close each to other that they
+can be overlapped.</p>
+<dl class="simple">
+<dt>px<span class="classifier">numpy.array</span></dt><dd><p>array of the peak positions (obtained by a peak picking method)</p>
+</dd>
+<dt>d<span class="classifier">float OR callable</span></dt><dd><p>if float, it is the distance threshold (i.e., peaks which are closer to each
+other are grouped)
+if callable, it is a function with one input
+parameter (the peak position as <em>float</em>) which returns the distance
+threshold expressed as a function of the independent variable
+corresponding to <em>px</em></p>
+</dd>
+</dl>
+<dl>
+<dt>groups<span class="classifier">list of lists of tuples</span></dt><dd><p>list describing the grouping of the peaks accordind their mutual
+distances
+the format is as follows:</p>
+<p>[[(i0, v0), (i1, v1)…], [(in, vn), (in+1, vn+1)…]…], where each
+nested list represent a group of mutually close peaks and each tuple
+in these lists contains index of an element of the input parameter
+<em>px</em> and the corresponding value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.gauss">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">gauss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian profile function from the input parameters.</p>
+<dl class="simple">
+<dt>x<span class="classifier">numpy.array</span></dt><dd><p>array of independent variables to be fitted against
+<em>x</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>G_x<span class="classifier">numpy.array</span></dt><dd><p>array containing the Gaussian peak profile
+corresponding to the independent variable <em>x</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.lorentz">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">lorentz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.lorentz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Lorentzian profile function from the input parameters.</p>
+<dl class="simple">
+<dt>x<span class="classifier">numpy.array</span></dt><dd><p>array of independent variables to be fitted against
+<em>x</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>L_x<span class="classifier">numpy.array</span></dt><dd><p>array containing the Lorentzian peak profile
+corresponding to the independent variable <em>x</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.peak_model">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">peak_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">px</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">py</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pl_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[200.0,</span> <span class="pre">212.0,</span> <span class="pre">-</span> <span class="pre">0.07,</span> <span class="pre">0.6]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'voigt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.peak_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a fit of experimental spectrum based on stochastic modeling of small areas’ optima</p>
+<dl class="simple">
+<dt>px<span class="classifier">numpy.array</span></dt><dd><p>array of the peak positions (obtained by a peak picking method)</p>
+</dd>
+<dt>py<span class="classifier">numpy.array</span></dt><dd><p>array containing integral intensities of the detected peaks
+<em>py</em> must correspond to <em>px</em></p>
+</dd>
+<dt>spe<span class="classifier">numpy.array</span></dt><dd><p>array containing the experimental spectrum as sorted onto two columns of
+[<em>energy</em>, <em>signal/intensity</em>]
+<em>energy</em> must be given in units consistent with <em>px</em></p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>pl_range<span class="classifier">list</span></dt><dd><p>list defining the initial spectral area to search on and additional constants as defined above
+by default, <em>pl_range</em> equals <em>[200., 212., -0.07, 0.6]</em></p>
+</dd>
+<dt>step<span class="classifier">float</span></dt><dd><p>increment step to be taken by the fitting procedure
+<em>step</em> must be given in units consistent with <em>px</em>
+by default, <em>step</em> equals <em>12.</em></p>
+</dd>
+<dt>profile<span class="classifier">str</span></dt><dd><p>a string corresponding to one of single peak profile functions
+(“gauss”, “lorentz”, “voigt”, or “pseudovoigt”)
+this profile is used for all peaks within the model
+by default, <em>profile</em> equals <em>voigt</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>fit_spect<span class="classifier">numpy.array</span></dt><dd><p>y-axis of the fitted/simulated spectrum
+fit_spect corresponds to the <em>energy</em> axis of <em>spe</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.pseudovoigt">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">pseudovoigt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.pseudovoigt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Calculates the pseudoVoigt (weighted sum of Gaussian and Lorentzian</dt><dd><p>profiles) profile function from the input parameters.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>x<span class="classifier">numpy.array</span></dt><dd><p>array of independent variables to be fitted against
+<em>x</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area
+by default, <em>a</em> equals <em>1.0</em> (normalised profile)</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>s<span class="classifier">float</span></dt><dd><p>peak shape parameter
+values from the interval of [0,1] are only accepted as inputs
+if <em>s</em> equals <em>0.</em>, the profile is pure Gaussian
+if <em>s</em> equals <em>1.</em>, the profile is pure Lorentzian</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>P_x<span class="classifier">numpy.array</span></dt><dd><p>array containing the pseudoVoigt peak profile
+corresponding to the independent variable <em>x</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.rsopt">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">rsopt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obfun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tsteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[3,</span> <span class="pre">1e-05]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfun_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfun_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.rsopt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Casts a randomised algorithm onto peak profile searching</p>
+<dl>
+<dt>obfun<span class="classifier">instance</span></dt><dd><p>instance resulting from the objective function to be minimised onto a peak profile</p>
+</dd>
+<dt>bounds<span class="classifier">list</span></dt><dd><p>list containing respectively [<em>lower</em>, ⋅] and [⋅, <em>upper</em>] bounds to a peak profile</p>
+</dd>
+<dt>msteps<span class="classifier">int</span></dt><dd><p>the number of minimisation steps to be taken within an iteration
+by default, <em>msteps</em> equals <em>50</em></p>
+</dd>
+<dt>fsteps<span class="classifier">int</span></dt><dd><p>the number of steps taken to focus the searching algorithm
+by default, <em>fsteps</em> equals <em>100</em></p>
+</dd>
+<dt>tsteps<span class="classifier">int</span></dt><dd><p>the number of testing/trial steps to the algorithm
+<em>tsteps</em> must be &gt; <em>fsteps</em></p>
+<dl class="simple">
+<dt>if <em>tsteps</em> &lt; <em>fsteps</em>,</dt><dd><p>a UserException is raised</p>
+</dd>
+</dl>
+<p>by default, <em>tsteps</em> equals <em>500</em></p>
+</dd>
+<dt>ftol<span class="classifier">list of type [int, float]</span></dt><dd><p>list containing respectively [<em>initial maximum iterations</em>, ⋅] and [⋅, <em>tolerance threshold</em>] characteristics
+by default, <em>ftol</em> equals <em>[3, 1e-05]</em></p>
+</dd>
+<dt>obfun_args<span class="classifier">tuple</span></dt><dd><p>additional arguments to the <em>obfun</em> objective function
+by default, <em>obfun_args</em> equals <em>()</em></p>
+</dd>
+<dt>obfun_kwargs<span class="classifier">dict</span></dt><dd><p>additional keyword arguments to the <em>obfun</em> objective function
+by default, <em>obfun_kwargs</em> equals <em>{}</em></p>
+</dd>
+<dt>callback<span class="classifier">instance</span></dt><dd><p>arbitrary callback function
+by default, callback is <em>NoneType</em>’d</p>
+</dd>
+<dt>callback_args<span class="classifier">tuple</span></dt><dd><p>additional arguments to the <em>callback</em> function
+by default, <em>callback_args</em> equals <em>()</em></p>
+</dd>
+<dt>callback_kwargs<span class="classifier">dict</span></dt><dd><p>additional keyword arguments to the <em>callback</em> function
+by default, <em>callback_kwargs</em> equals <em>{}</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>best_pars<span class="classifier">numpy.array</span></dt><dd><p>array containing the best fitting peak parameters</p>
+</dd>
+<dt>fold<span class="classifier">float</span></dt><dd><p>converge threshold achieved</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.pfit.voigt">
+<span class="sig-prename descclassname"><span class="pre">rorap.pfit.</span></span><span class="sig-name descname"><span class="pre">voigt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.pfit.voigt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Faddeeva function to estimate the Voigt profile function from the input parameters.</p>
+<dl class="simple">
+<dt>x<span class="classifier">numpy.array</span></dt><dd><p>array of independent variables to be fitted against
+<em>x</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>V_x<span class="classifier">numpy.array</span></dt><dd><p>array containing the Voigt peak profile
+corresponding to the independent variable <em>x</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-rorap.raman">
+<span id="rorap-raman-module"></span><h2>rorap.raman module<a class="headerlink" href="#module-rorap.raman" title="Permalink to this headline">¶</a></h2>
+<p>Theoretical Raman spectra module</p>
+<p>This simpler library contains functions drafted for generating a theoretical rotational Raman spectrum based on Dunham series’s expansion coefficients and under conditions relevant for plasma experiments (e.g., those incentivising rotovibrational coupling and altering rotational degeneracies). CO2 and N2 case studies are proposed by the molecular constants dictionaries shown below.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.E_J">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">E_J</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.E_J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates rotational energies of a linear molecule with a 1st-degree non-rigidity approximation</p>
+<dl class="simple">
+<dt>J<span class="classifier">numpy.array</span></dt><dd><p>array of rotational quantum numbers applied</p>
+</dd>
+<dt>B0<span class="classifier">float</span></dt><dd><p>rotational constant for equilibrium separation
+<em>B0</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>D0: float</dt><dd><p>centrifugal distortion constant
+<em>D0</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>delta_J<span class="classifier">float</span></dt><dd><p>allowed transitions’ change of <em>J</em> quanta
+by default, <em>delta_J</em> equals <em>2.0</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>E_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the rotational energies
+<em>E_J</em> are formal wavenumbers in cm-1</p>
+</dd>
+<dt>E_delta_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the rotational energies of <em>J+delta_J</em> quanta
+<em>E_delta_J</em> are formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.Nv_diatomic">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">Nv_diatomic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">we</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wexe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_vib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.Nv_diatomic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partitions vibrational populations of a diatomic (or a single vibrational mode)</p>
+<dl class="simple">
+<dt>we<span class="classifier">float</span></dt><dd><p>fundamental vibrational frequency
+<em>we</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>wexe<span class="classifier">float</span></dt><dd><p>first-order anharmonicity correction
+<em>wexe</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>T_vib<span class="classifier">float</span></dt><dd><p>vibrational temperature
+<em>T_vib</em> must be temperature in kelvins</p>
+</dd>
+<dt>v_max<span class="classifier">integer</span></dt><dd><p>maximal vibrational quanta to be partitioned
+by default, <em>v_max</em> equals <em>6</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>v<span class="classifier">numpy.array</span></dt><dd><p>array of vibrational quanta [0, <em>v_max</em>] to be partitioned</p>
+</dd>
+<dt>x_V<span class="classifier">numpy.array</span></dt><dd><p>relative populations of vibrational energy states spaced by their quanta <em>v</em> s</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.Q_rot">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">Q_rot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_rot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.Q_rot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the rotational partition function of a linear molecule by using a 2nd degree expansion of (<a class="reference external" href="http://dx.doi.org/10.1063/1.454608)'s">http://dx.doi.org/10.1063/1.454608)’s</a>. Only the most abundant isotopologues (composed of 12C and/or 16O nuclei) are currently considered.</p>
+<dl class="simple">
+<dt>B0<span class="classifier">float</span></dt><dd><p>rotational constant for equilibrium separation
+<em>B0</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>sigma_0<span class="classifier">float</span></dt><dd><p>classical symmetry number</p>
+</dd>
+<dt>T_rot: float</dt><dd><p>rotational temperature
+<em>T_rot</em> must be temperature in kelvins</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Q_rot<span class="classifier">float</span></dt><dd><p>rotational partition function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.b_J">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">b_J</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.b_J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the J-dependent line strength factors of a linear molecule by means of Placzek-Teller coefficients 
+(<a class="reference external" href="https://pure.tue.nl/ws/portalfiles/portal/46924564/841494-1.pdf">https://pure.tue.nl/ws/portalfiles/portal/46924564/841494-1.pdf</a>)</p>
+<dl class="simple">
+<dt>J<span class="classifier">numpy.array</span></dt><dd><p>array of rotational quantum numbers applied</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>b_J<span class="classifier">numpy.array</span></dt><dd><p>line strenght factors of rotational transitions spaced by the <em>J</em> quanta
+<em>b_J</em> corresponds to strictly increasing <em>nu_J</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.dSigma_dOhm">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">dSigma_dOhm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.15555555555555556</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.dSigma_dOhm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the differential scattering cross section of defined transitions</p>
+<dl class="simple">
+<dt>g2<span class="classifier">float</span></dt><dd><p>second hyperpolarisibility of the species considered
+<em>g2</em> must be a scalar in (F2 m4)</p>
+</dd>
+<dt>b_J<span class="classifier">numpy.array</span></dt><dd><p>line strenght factors of rotational transitions spaced by the <em>J</em> quanta</p>
+</dd>
+<dt>nu_0<span class="classifier">float</span></dt><dd><p>formal wavenumbers corresponding to the exciting laser’s frequency
+<em>nu_0</em> must be wavenumbers in cm-1</p>
+</dd>
+<dt>nu_J<span class="classifier">numpy.array</span></dt><dd><p>rotational Raman transitions’ corresponding to the <em>J</em> quanta
+<em>nu_J</em> must be wavenumbers in cm-1
+<em>nu_J</em> must be strictly increasing</p>
+</dd>
+<dt>pol_weight<span class="classifier">float</span></dt><dd><p>weighing factor compensating for various polarisations collected
+<em>pol_weight</em> must be a positive floating point number
+by default <em>pol_weight</em> equals <em>7./45.</em> (i.e., both polarisation directions are imaged, 
+<a class="reference external" href="https://pure.tue.nl/ws/portalfiles/portal/46924564/841494-1.pdf">https://pure.tue.nl/ws/portalfiles/portal/46924564/841494-1.pdf</a>)</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>dSigma_dOhm<span class="classifier">numpy.array</span></dt><dd><p>rotational Raman transitions’ differential cross sections
+<em>dSigma_dOhm</em> is a formal cross section derivative in 1e-031 (cm2 sr-1)
+<em>dSigma_dOhm</em> corresponds to strictly increasing <em>nu_J</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.g_J">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">g_J</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vib_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.g_J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the rotational statistical weights</p>
+<dl class="simple">
+<dt>J<span class="classifier">numpy.array</span></dt><dd><p>array of rotational quantum numbers applied</p>
+</dd>
+<dt>g_s<span class="classifier">float</span></dt><dd><p>statistical weight for ‘s’ symmetry transitions</p>
+</dd>
+<dt>g_a<span class="classifier">float</span></dt><dd><p>statistical weight for ‘a’ symmetry transitions</p>
+</dd>
+<dt>vib_weight<span class="classifier">float OR NoneType</span></dt><dd><p>vibrationally coupled s/a weighing
+by default, <em>vib_weight</em> is NoneTyped (no vibrational coupling is applied; the opposite case is CO2)</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>g_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the statistical weights corresponding to rotational quanta <em>J</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.gauss">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">gauss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian profile function from the input parameters.</p>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>array of wavenumbers to be fitted against
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position
+<em>mu</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>G_wn<span class="classifier">numpy.array</span></dt><dd><p>array containing the Gaussian peak profile
+corresponding to the independent variable <em>wn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.lorentz">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">lorentz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.lorentz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Lorentzian profile function from the input parameters.</p>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>array of wavenumbers to be fitted against
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position
+<em>nu_0</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>L_wn<span class="classifier">numpy.array</span></dt><dd><p>array containing the Lorentzian peak profile
+corresponding to the independent variable <em>wn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.nu_J">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">nu_J</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_delta_J</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.nu_J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the rotational Raman’s transition wavenumbers</p>
+<dl class="simple">
+<dt>E_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the rotational energies
+<em>E_J</em> are formal wavenumbers in cm-1</p>
+</dd>
+<dt>E_delta_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the rotational energies of <em>J+delta_J</em> quanta
+<em>E_delta_J</em> are formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>nu_J<span class="classifier">numpy.array</span></dt><dd><p>rotational Raman transitions’ wavenumbers corresponding to the <em>J</em> quanta
+<em>nu_J</em> are wavenumbers in cm-1
+<em>nu_J</em> are strictly increasing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.pop_J">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">pop_J</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_tot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q_rot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_rot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.pop_J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partitions the rotational populations of a molecule.</p>
+<dl class="simple">
+<dt>n_tot<span class="classifier">float</span></dt><dd><p>total abundance of a given molecule</p>
+</dd>
+<dt>J<span class="classifier">numpy.array</span></dt><dd><p>array of rotational quantum numbers applied</p>
+</dd>
+<dt>g_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the statistical weights corresponding to rotational quanta <em>J</em></p>
+</dd>
+<dt>Q_rot<span class="classifier">float</span></dt><dd><p>rotational partition function</p>
+</dd>
+<dt>E_J<span class="classifier">numpy.array</span></dt><dd><p>array containing the rotational energies
+<em>E_J</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>T_rot: float</dt><dd><p>rotational temperature
+<em>T_rot</em> must be temperature in kelvins</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pop_J<span class="classifier">numpy.array</span></dt><dd><p>fractioned populations corresponding to rotational quanta <em>J</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.roRaman_spectrum">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">roRaman_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'voigt'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.roRaman_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a theoretical rotational Raman spectrum based on its stick diagram</p>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>experimentally recorded wavenumber axis
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>nu<span class="classifier">numpy.array</span></dt><dd><p>array containing theoretical Raman transitions’ wavenumbers
+<em>nu</em> must be formal wavenumbers in cm-1
+<em>nu</em> must be strictly increasing</p>
+</dd>
+<dt>I<span class="classifier">numpy.array</span></dt><dd><p>stick diagram of theoretical Raman intensities
+indexing of <em>I</em> must correspond to that of <em>nu</em></p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>profile<span class="classifier">string</span></dt><dd><p>line fitting profile name
+<em>‘gauss’</em>, <em>‘lorentz’</em>, and <em>‘voigt’</em> are allowed inputs
+by default, <em>profile</em> equals <em>‘voigt’</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>experimentally recorded wavenumber axis
+<em>wn</em> are formal wavenumbers in cm-1
+<em>wn</em> are strictly increasing</p>
+</dd>
+<dt>I_wn<span class="classifier">numpy.array</span></dt><dd><p>theoretical rotational Raman spectrum
+<em>I_wn</em> corresponds to strictly increasing <em>wn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.roRaman_uncoupled">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">roRaman_uncoupled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pop_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dSigma_dOhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.roRaman_uncoupled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the stick diagram of a vibrationally uncoupled rotational Raman spectrum</p>
+<dl class="simple">
+<dt>pop_J<span class="classifier">numpy.array</span></dt><dd><p>fractioned populations corresponding to rotational quanta <em>J</em></p>
+</dd>
+<dt>dSigma_dOhm<span class="classifier">numpy.array</span></dt><dd><p>rotational Raman transitions’ differential cross sections
+<em>dSigma_dOhm</em> must be a formal cross section derivative in the multiples of (cm2 sr-1)</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>I_J<span class="classifier">numpy.array</span></dt><dd><p>stick diagram of unnormalised rotational Raman intensities
+<em>I_J</em> corresponds to strictly increasing <em>nu_J</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.rovib_coupling">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">rovib_coupling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I_J</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">we</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wexe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_vib</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma_v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.rovib_coupling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Couples rotational Raman transitions onto vibrational populations via Dunham first-order anharmonicity correction</p>
+<dl>
+<dt>J<span class="classifier">numpy.array</span></dt><dd><p>array of rotational quantum numbers applied</p>
+</dd>
+<dt>nu_J<span class="classifier">numpy.array</span></dt><dd><p>rotational Raman transitions’ corresponding to the <em>J</em> quanta
+<em>nu_J</em> must be wavenumbers in cm-1
+<em>nu_J</em> must be strictly increasing</p>
+</dd>
+<dt>I_J<span class="classifier">numpy.array</span></dt><dd><p>stick diagram of unnormalised rotational Raman intensities
+<em>I_J</em> must correspond to strictly increasing <em>nu_J</em></p>
+</dd>
+<dt>we<span class="classifier">float</span></dt><dd><p>fundamental vibrational frequency
+<em>we</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>wexe<span class="classifier">float</span></dt><dd><p>first-order anharmonic oscillator correction (Y20)
+<em>wexe</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>alpha<span class="classifier">float</span></dt><dd><p>first-order anharmonic vibrotor correction (Y11)
+<em>alpha</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>T_vib<span class="classifier">float</span></dt><dd><p>vibrational temperature
+<em>T_vib</em> must be temperature in kelvins</p>
+</dd>
+<dt>gamma_v<span class="classifier">function <em>&lt;function __main__.&lt;lambda&gt;(v)&gt;</em></span></dt><dd><p>polarisibilty matrix elements fractioned as a function of vibrational quanta <em>v</em>
+<em>gamma_v</em> must be a single-argument function and return a dimensionless number</p>
+</dd>
+<dt>delta_J<span class="classifier">float</span></dt><dd><p>allowed transitions’ change of <em>J</em> quanta
+by default, <em>delta_J</em> equals <em>2.0</em></p>
+</dd>
+<dt>v_max<span class="classifier">integer</span></dt><dd><p>maximal vibrational quanta to be partitioned
+by default, <em>v_max</em> equals <em>6</em></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>nu_vJ<span class="classifier">numpy.array</span></dt><dd><p>rotovibrational Raman transitions’ wavenumbers
+<em>nu_vJ</em> are formal wavenumbers in cm-1
+<em>nu_vJ</em> are strictly increasing</p>
+</dd>
+<dt>I_vJ<span class="classifier">numpy.array</span></dt><dd><p>stick diagram of unnormalised rotovibrational Raman intensities
+<em>I_vJ</em> corresponds to strictly increasing <em>nu_vJ</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.vib_weight_CO2">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">vib_weight_CO2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T_vib</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.vib_weight_CO2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the vibrationally coupled weighing for CO2 rotational quanta (<a class="reference external" href="https://doi.org/10.1364/AO.57.005694">https://doi.org/10.1364/AO.57.005694</a>).
+Only the carbon dioxide case is exemplified here.</p>
+<dl class="simple">
+<dt>T_vib<span class="classifier">float</span></dt><dd><p>vibrational temperature
+<em>T_vib</em> must be temperature in kelvins</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>vib_weight<span class="classifier">float</span></dt><dd><p>vibrationally coupled weighing factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rorap.raman.voigt">
+<span class="sig-prename descclassname"><span class="pre">rorap.raman.</span></span><span class="sig-name descname"><span class="pre">voigt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rorap.raman.voigt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Faddeeva function to estimate the Voigt profile function from the input parameters.</p>
+<dl class="simple">
+<dt>wn<span class="classifier">numpy.array</span></dt><dd><p>array of wavenumbers to be fitted against
+<em>wn</em> must be wavenumbers in cm-1
+<em>wn</em> must be strictly increasing</p>
+</dd>
+<dt>mu<span class="classifier">float</span></dt><dd><p>peak center position
+<em>mu</em> must be formal wavenumbers in cm-1</p>
+</dd>
+<dt>a<span class="classifier">float</span></dt><dd><p>peak area</p>
+</dd>
+<dt>fwhm<span class="classifier">float</span></dt><dd><p>peak full width at half maximum
+<em>fwhm</em> must be formal wavenumbers in cm-1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>V_wn<span class="classifier">numpy.array</span></dt><dd><p>array containing the Voigt peak profile
+corresponding to the independent variable <em>wn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-rorap">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rorap" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">rorap package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-rorap.assign">rorap.assign module</a><ul>
+<li><a class="reference internal" href="#assignment-module">Assignment module</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-rorap.bline">rorap.bline module</a><ul>
+<li><a class="reference internal" href="#baseline-correction-module">Baseline correction module</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-rorap.fiber">rorap.fiber module</a></li>
+<li><a class="reference internal" href="#module-rorap.filters">rorap.filters module</a><ul>
+<li><a class="reference internal" href="#filters-module">Filters module</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-rorap.noise">rorap.noise module</a><ul>
+<li><a class="reference internal" href="#signal-noise-module">Signal/noise module</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-rorap.pdetect">rorap.pdetect module</a><ul>
+<li><a class="reference internal" href="#peak-detection-module">Peak detection module</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-rorap.pfit">rorap.pfit module</a></li>
+<li><a class="reference internal" href="#module-rorap.raman">rorap.raman module</a></li>
+<li><a class="reference internal" href="#module-rorap">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="previous chapter">rorap</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/rorap.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="rorap"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RoRaP 0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >rorap</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">rorap package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Vojta Laitl.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

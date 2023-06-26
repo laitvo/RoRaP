@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>RoRaP (Rotational Raman Screening of Plasma Systems) &#8212; RoRaP 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="rorap" href="modules.html" />
+    <link rel="prev" title="Welcome to RoRaP’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="rorap"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to RoRaP’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RoRaP 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">RoRaP (<strong>Ro</strong>tational <strong>Ra</strong>man Screening of <strong>P</strong>lasma Systems)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="rorap-rotational-raman-screening-of-plasma-systems">
+<h1>RoRaP (<strong>Ro</strong>tational <strong>Ra</strong>man Screening of <strong>P</strong>lasma Systems)<a class="headerlink" href="#rorap-rotational-raman-screening-of-plasma-systems" title="Permalink to this headline">¶</a></h1>
+<p>The documentation to RoRaP will be made available via a program website.</p>
+<section id="quick-readme">
+<h2>Quick ReadMe<a class="headerlink" href="#quick-readme" title="Permalink to this headline">¶</a></h2>
+<p>The program is responsible for a simpler reading-out of rotational Raman spectra collected via screening a plasma system.</p>
+<p><cite>__init__.py</cite> is an arbitrary code file responsible for loading the library. The actual loading of an experimental spectral image is accomplished by the <cite>fiber.py</cite> module.
+<cite>filters.py</cite> introduces a simpler Gaussian filter further used in estimating the noise level <cite>noise.py</cite> and, subsequently, the spectral base line (<cite>bline.py</cite>). Experimental signal peaks may be detected by using <cite>pdetect.py</cite> and assigned via <cite>assign.py</cite>. The peaks detected may then undergo deterministic or stochastic numerical fitting of line or band profiles (<cite>pfit.py</cite>). Finally, <cite>raman.py</cite> contains computational tools for drawing a theoretical rotational spectrum based on Dunham series coefficients and selection rules, which may be optimised onto an experimental record to draw temperature and chemical composition data. Limited case studies are suggested by inserting molecular constant dictionaries.</p>
+<p>The code was drafted by Vojta Laitl, as partially reproduced from program scripts by Petr Kubelík, Ph.D., at the Czech Academy of Sciences in 2022. The program can be found at <a class="reference external" href="https://raw.githack.com/laitvo/PuPlasAn/main/docs/build/html/index.html">the code script’s webpage</a> and distributed under <a class="reference external" href="https://github.com/laitvo/PuPlasAn/blob/main/LICENSE">Apache License 2.0</a>. All details to particular functions and program modules are to be found in the above code scripts and in the example section, similarly to this module.</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>The program scripts above are to be found in <a class="reference external" href="https://github.com/laitvo/RoRaP/tree/main/rorap">rorap</a> and are elaborated in <a class="reference external" href="https://github.com/laitvo/RoRaP/tree/main/example">example</a> folders, respectively. We recommend that the users download the example file alongside the program scripts.</p>
+<p>Conventional libraries, <cite>numpy</cite>, <cite>scipy</cite>, and <cite>pylab</cite> are employed. Besides them, running the example script and conveniently using the library requires having <a class="reference external" href="https://pypi.org/project/spe2py/">spe2py</a> and <a class="reference external" href="https://pypi.org/project/lmfit/">lmfit</a> installed.</p>
+<p>The code is distributed under Apache License 2.0. Authors welcome constructive feedback on its operability.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">RoRaP (<strong>Ro</strong>tational <strong>Ra</strong>man Screening of <strong>P</strong>lasma Systems)</a><ul>
+<li><a class="reference internal" href="#quick-readme">Quick ReadMe</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to RoRaP’s documentation!</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="next chapter">rorap</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="rorap"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to RoRaP’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RoRaP 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">RoRaP (<strong>Ro</strong>tational <strong>Ra</strong>man Screening of <strong>P</strong>lasma Systems)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Vojta Laitl.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>
