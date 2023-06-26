@@ -1,5 +1,5 @@
-# RoRaP (**Ro**tational **Ra**man Screening of **P**lasma Systems)
-The documentation to RoRaP will be made available via a program website.
+# [RoRaP](https://raw.githack.com/laitvo/RoRaP/main/docs/html/index.html) (**Ro**tational **Ra**man Screening of **P**lasma Systems)
+The documentation to RoRaP is made available via a [program website](https://raw.githack.com/laitvo/RoRaP/main/docs/html/index.html).
 
 ## Quick ReadMe
 The program is responsible for a simpler reading-out of rotational Raman spectra collected via screening a plasma system. 
