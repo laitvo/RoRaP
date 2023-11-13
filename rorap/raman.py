@@ -23,31 +23,33 @@ import time
 
 
 ###Molecular constant dictionaries
-B0 = {'CO2': 0.39020,    'CO': 1.92252,      'O2-X': 1.43780,  'N2': 1.98973,  'O2-a': 1.4264  ,'O2-b':    1.4003}
+B0 = {'CO2': 0.39020,    'CO': 1.92252,      'O2-X': 1.43780,  'N2': 1.98973,  'O2-a': 1.4264  ,'O2-b':    1.4003, 'NO-X': 1.67195, 'NO-a': 1.72016}
 #rotational constant for equilibrium separation (cm-1), Y01 in Dunham series
-D0 = {'CO2': 0.12e-6,    'CO': 6.1193e-6,    'O2-X': 4.8e-6,   'N2': 0.0,      'O2-a': 4.86e-6 ,'O2-b':    5.35e-6}
+D0 = {'CO2': 0.12e-6,    'CO': 6.1193e-6,    'O2-X': 4.8e-6,   'N2': 0.0,      'O2-a': 4.86e-6 ,'O2-b':    5.35e-6, 'NO-X': 0.54e-06, 'NO-a': 10.23e-06}
 #centrifugal distortion constant (cm-1), -Y02 in Dunham series
 ###sectic and higher distortions are neglected
-we    = {'CO2': None,          'CO': 2169.81,      'O2-X': 1580.19,  'N2': 2358.58,  'O2-a': 1483.5  ,'O2-b':    1432.77}
+we    = {'CO2': None,          'CO': 2169.81,      'O2-X': 1580.19,  'N2': 2358.58,  'O2-a': 1483.5  ,'O2-b':    1432.77, 'NO-X': 1904.20, 'NO-a': 	1904.04}
 #fundamental vibration frequencies for diatomics (CO2 NoneTyped, vibrations corrected elsewhere) (cm-1), Y10 in Dunham series
-wexe  = {'CO2': None,          'CO': 13.2883,      'O2-X': 11.98 ,   'N2': 14.324,   'O2-a': 12.9    ,'O2-b':    14.00}
+wexe  = {'CO2': None,          'CO': 13.2883,      'O2-X': 11.98 ,   'N2': 14.324,   'O2-a': 12.9    ,'O2-b':    14.00, 'NO-X': 14.075, 'NO-a': 14.100}
 #first anharmonicity correction for diatomics (CO2 NoneTyped, vibrations corrected elsewhere) (cm-1), -Y20 in Dunham series
-alpha = {'CO2': 0,          'CO': 0.01750,      'O2-X': 0.0159 ,  'N2': 0.01731,  'O2-a': 0.0171,'O2-b':    0.01820}
+alpha = {'CO2': 0,          'CO': 0.01750,      'O2-X': 0.0159 ,  'N2': 0.01731,  'O2-a': 0.0171,'O2-b':    0.01820, 'NO-X': 0.0171, 'NO-a': 0.0182}
 #first-order rotational constant (cm-1), -Y11 in Dunham series
-sigma_0 = {'CO2': 2., 'CO': 1., 'O2-X': 2., 'N2': 2., 'O2-a': 2., 'O2-b': 2.}
+sigma_0 = {'CO2': 2., 'CO': 1., 'O2-X': 2., 'N2': 2., 'O2-a': 2., 'O2-b': 2., 'NO-X': 1., 'NO-a': 1.}
 #classical symmetry number (2 for D(inf)h, 1 for C(inf)v)
-g2 = {'CO2': 23.74  ,    'CO': 6.09      ,   'O2-X': 12.67  ,  'N2': 7.91   ,  'O2-a': 1.26446 ,'O2-b':    1.26446}
+g2 = {'CO2': 23.74  ,    'CO': 6.09      ,   'O2-X': 12.67  ,  'N2': 7.91   ,  'O2-a': 1.26446 ,'O2-b':    1.26446, 'NO-X': 11.55, 'NO-a': 11.55}
 #second hyperpolarisibility (F2m4)
-gamma_v = {'CO2': lambda v: 1., 'O2-X': lambda v: (1.097 + 0.0339*v*1.445 + 0.00040*v**2*1.445)**2/(1.097)**2,  'CO': lambda v: 1.+(0.055 * v), 'N2':  lambda v: (0.719 + 0.0177*v*1.445 + 0.000150*1.445*v**2)**2/(0.719)**2, 'O2-a': lambda v: (1.097 + 0.0339*v*1.445 + 0.00040*v**2*1.445)**2/(1.097)**2, 'O2-b': lambda v: (1.097 + 0.0339*v*1.445 + 0.00040*v**2*1.445)**2/(1.097)**2}
+gamma_v = {'CO2': lambda v: 1., 'O2-X': lambda v: (1.097 + 0.0339*v*1.445 + 0.00040*v**2*1.445)**2/(1.097)**2,  'CO': lambda v: 1.+(0.055 * v), 'N2':  lambda v: (0.719 + 0.0177*v*1.445 + 0.000150*1.445*v**2)**2/(0.719)**2, 'O2-a': lambda v: (1.097 + 0.0339*v*1.445 + 0.00040*v**2*1.445)**2/(1.097)**2, 'O2-b': lambda v: (1.097 + 0.0339*v*1.445 + 0.00040*v**2*1.445)**2/(1.097)**2, 'NO-X': lambda v: 1., 'NO-a': lambda v: 1.}
 #polarisibilty matrix elements fractioned as a function of vibrational quanta *v*:
     #CO2: unity function, compensated elsewhere
     #O2: https://doi.org/10.1016/S0022-2852(02)00012-7
     #CO: https://doi.org/10.1364/OL.7.000440
     #N2: https://doi.org/10.1016/S0022-2852(02)00012-7
-g_s   = {'CO2': 1.,          'CO': 1.,            'O2-X': 0.,        'N2': 6.,        'O2-a': 1.       ,'O2-b':    1.}
-#statistical weight/degeneracy for 's' symmetry transitions (even for singlet terms)
-g_a   = {'CO2': 0.,          'CO': 1.,            'O2-X': 1.,        'N2': 3.,        'O2-a': 1.       ,'O2-b':    0.}
-#statistical weight/degeneracy for 'a' symmetry transition (odd for singlet terms)
+    #NO: unity function, to be replaced
+g_s   = {'CO2': 1.,          'CO': 1.,            'O2-X': 0.,        'N2': 6.,        'O2-a': 1.       ,'O2-b':    1., 'NO-X': 1., 'NO-a': 1.}
+#statistical weight/degeneracy for 's' symmetry transitions (even for singlet terms, dummy for NO -- half-integer J; consistency was tested)
+g_a   = {'CO2': 0.,          'CO': 1.,            'O2-X': 1.,        'N2': 3.,        'O2-a': 1.       ,'O2-b':    0., 'NO-X': 1., 'NO-a': 1.}
+#statistical weight/degeneracy for 'a' symmetry transition (odd for singlet terms, dummy for NO -- half-integer J; consistency was tested)
+
 
 
 def gauss(wn, mu, a, fwhm):
